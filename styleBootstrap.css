@@ -8,15 +8,14 @@ body {
 .text-center {
 text-align: center;
 }
-.border {
-    border: 5px solid black;
-}
-.espace {
-   min-height: 30rem; 
-}
+.espace {/*Ajuste*/
+
+    min-height: 21.7rem; 
+}/*   min-height: 30rem;*/
 .text-espace {
+    
     line-height: 2.8em;
 }
 .espace-coordonées {
-     min-height: 20.2rem; 
-}
+  min-height: 20.2rem; 
+}  
