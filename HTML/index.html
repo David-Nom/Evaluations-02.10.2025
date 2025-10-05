@@ -73,6 +73,10 @@ bottom:0; }/* Block important espace entre  les lignes */
   ul.menu li a{display:block; padding:8px 10px; border:1px solid #2b3340; border-radius:4px; color:#e5e7eb; text-decoration:none; background:#1f2937}
   ul.menu li a:hover{background:#273245}/*Couleurs hover des li nav*/
 
+  .Dav::before {content: "✓";opacity: 0;position: absolute;left: 5px;transition: transform 0.4s ease, color 0.4s ease;}
+.Dav:hover::before{opacity: 1;transform: scale(1.5);color: limegreen;}
+.Dav:hover {color: limegreen;}
+
   /*Tableau*/
   .table-wrap{overflow-x:auto; border:1px solid #000000;}
   table{width:100%; border-collapse:collapse}/*Prendra tout la largeur du block et fussionne les bordures */
@@ -116,7 +120,7 @@ bottom:0; }/* Block important espace entre  les lignes */
     <div class="container nav-inner">
       <a class="brand" href="#" aria-label="Accueil"><img src="./Images/home.png" width="5%"></a>
 
-      <ul class="menu">
+      <ul class="menu Dav"><!--animation-->
   <li><a href="#">Mes INFOS</a></li>
   <li><a href="#">MES AUTORISATIONS D'ACCES</a></li>
   <li><a href="#">MES SALARIES</a></li>
@@ -253,6 +257,4 @@ bottom:0; }/* Block important espace entre  les lignes */
   </footer>
 </body>
 </html>
-<!--Rajouter les imgs sur le html-->
-<!--Rajouter plus de notes-->
-<!--Possitionner les href sur les bonne mage-->
+

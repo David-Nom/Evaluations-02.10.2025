@@ -19,3 +19,7 @@ text-align: center;
 .espace-coordonées {
   min-height: 20.2rem; 
 }  
+/*Animation*/
+.Dav::before {content: "✓";opacity: 0;position: absolute;left: 5px;transition: transform 0.4s ease, color 0.4s ease;}
+.Dav:hover::before{opacity: 1;transform: scale(1.5);color: limegreen;}
+.Dav:hover {color: limegreen;}
