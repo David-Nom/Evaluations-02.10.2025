@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eval — Sans Bootstrap</title>
+  <style>
+  *{box-sizing:border-box}/*tous les éléments de la page utiliseront le modèle de boîte border-box Plus simple pour calculer les tailles.
+Pas de surprise quand on ajoute du padding ou une border.*/
+  body{margin:0; color:#0f172a;}
+  a{color:#0f172a; text-decoration:underline}
+  a:hover{text-decoration:none}/*pas de décoration lien (plus de underline à l'hover)*/
+
+
+  h2{font-size:2rem}/*Grossir les h2  note perso:h1,h2,h3,h4,p{margin:0 0 .6em}*/
+
+.opérations { border: 1px solid #000000; padding: 1rem;}/*le padding vas crée de l'espace entre le tableau*/
+
+  .container{max-width:90%;  margin:0 auto; padding:0}/*respecte un espaces correcte */
+
+footer{
+     margin-top: auto; 
+     bottom: 100%;/*le footer ce possitionne en bas*/
+     text-align: center;
+}
+  .stack{
+    display:flex;
+     flex-direction:column; /*aligne les éléments verticalement (de haut en bas)*/
+     gap:16px;
+    margin-bottom: 5px;}
+
+  .row{display:grid; gap:16px}/*Espace colonnes*/
+
+  .cols-2{grid-template-columns:1fr}
+
+  @media(min-width:1000px){ /*≥ 992px → écrans moyens (ordinateurs portables) / ≥ 1200px → grands écrans (desktop larges)*/
+.cols-2{grid-template-columns:1fr 1fr}} /*crée deux colonnes*/
+
+.pad{padding:2rem; bottom: 0; } /*espace à l'intérieur des blocks*/
+
+.espace{height: 25rem;}/*Pour égaliser le block important*/
+
+.important{ line-height: 4;
+bottom:0; }/* Block important espace entre  les lignes */
+
+
+  .article{border: 1px solid #000000; margin-bottom: 1rem; margin-top: 1rem; padding: 1rem;}/*bordure + espace block articles*/
+ 
+
+  /* En-tête blanc comme la capture, trois zones : gauche / centre / droite */
+  
+  .topbar{display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:1rem; padding:1rem}
+  
+  
+  
+
+  /*Centré*/
+  .top-center{justify-self:center;}
+
+  .text-center{padding-left: 4rem;}/*Décale le text*/
+
+  .top-right{justify-self:end; display:flex; gap:1rem; align-items:center; }
+
+  .top-meta{  grid-column: 3;/*J’ai essayé avec float: right, mais comme c’est dans une grille, ce n’est pas possible. J’ai donc simplement déplacé l’élément dans la colonne*/
+    justify-self: end;
+  display:flex;}/*Placement Entreprise Header*/
+
+  /* Navbar sombre + boutons encadrés Avec un effect hover comme animation */
+  nav.nav{background:#111827; color:#e5e7eb; border-bottom:1px solid #0b1220}
+  .nav-inner{display:flex; align-items:center; gap:10px; padding:8px 0}
+  .brand{display:inline-grid; place-items:center; width:28px; height:28px; border-radius:4px; background:#1f2937; color:#e5e7eb; font-weight:700}
+  ul.menu{list-style:none; margin:0; padding:0; display:flex; gap:8px; flex-wrap:wrap}
+  ul.menu li a{display:block; padding:8px 10px; border:1px solid #2b3340; border-radius:4px; color:#e5e7eb; text-decoration:none; background:#1f2937}
+  ul.menu li a:hover{background:#273245}/*Couleurs hover des li nav*/
+
+  /*Tableau*/
+  .table-wrap{overflow-x:auto; border:1px solid #000000;}
+  table{width:100%; border-collapse:collapse}/*Prendra tout la largeur du block et fussionne les bordures */
+  th,td{padding:10px 12px; text-align:left;}/*Aligne le text bien a droite dans le tableau*/
+
+/*Pour logo*/
+  .badge{display:inline-block; padding:2px 8px; border-radius:10px;}/*incline-block pour la possition horizontal*/
+
+  .tile{border:1px solid #000000;  padding:1rem; }/*Messsagerie+ contact pro btp*/
+
+  /*Urgent*/
+/*Dashed pour les tirets border*/
+  .urgent{ padding:10px; border-radius:4px; border-radius:1rem; border:5px dashed #000000; margin-bottom: 4rem; margin-top: 3rem;}
+
+.right-grid{
+    display:grid; 
+    gap:16px}
+
+  @media(min-width:1000px){/*Responsive comme demander pour ecran pc moyen et grand */
+
+.right-grid-2{grid-template-columns:1fr 1fr}}/*Nombre de colonnes 2 (1fr, 1fr = 2)*/
+
+</style>
+</head>
+<body>
+  <!-- Bandeau Haut -->
+  <header>
+  <div class="container topbar">
+    <p>Mon compte</p>
+    <div class="top-center"><img src="./Images/warning.png" width="5%"> Derniers jours pour votre DNAS !</div>
+    <div class="top-right">
+      <a href="https://mail.google.com"><img src="./Images/mail.png" width="15%">Messagerie(2)</a>
+      <a href="./FormulaireConnexion.html">Connexion</a>
+    </div>
+    <div class="top-meta">Entreprise XXXXXXXX: N Siret 00000000000</div>
+  </div>
+</header>
+
+
+  <nav class="nav">  <!-- Navigation -->
+    <div class="container nav-inner">
+      <a class="brand" href="#" aria-label="Accueil"><img src="./Images/home.png" width="5%"></a>
+
+      <ul class="menu">
+  <li><a href="#">Mes INFOS</a></li>
+  <li><a href="#">MES AUTORISATIONS D'ACCES</a></li>
+  <li><a href="#">MES SALARIES</a></li>
+  <li><a href="#">MES COTISATIONS</a></li>
+  <li><a href="#">MES CONTRATS</a></li>
+</ul>
+    </div>
+  </nav>
+
+
+  <main class="container">  <!-- Contenu principal -->
+    <section class="row cols-2">
+
+      <!-- Colonne 1 -->
+      <div class="stack">
+        <div class="pad">
+          <p>Bienvenue Entreprise XXXXX</p><!--block 1 (gauche)-->
+
+          <article class="article stack text-center">
+            <h2>Coordonnées</h2>
+            <p>SIRET : 000000000000</p>
+            <p><img src="./Images/home.png" width="5%"> Adresse : 298 boulevard Voltaire 75002 PARIS</p>
+            <p><img src="./Images/tel.png" width="5%"> Téléphone : 02 02 02 02 02</p>
+            <p><img src="./Images/mail.png" width="5%"> Adresse mail : <a href="mailto:xxxxxxxx.paris@gmail.com">xxxxxxxx.paris@gmail.com</a></p><!--Redirection-->
+          </article>
+
+          <article class="stack opérations">
+            <h3><img src="./Images/flag.png" width="5%"> Dernières opérations</h3>
+            <div class="table-wrap"><!--tableau-->
+              <table>
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Objet</th>
+                    <th>Numéro</th>
+                    <th>Auteur</th>
+                    <th>État</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>08/03/2014</td>
+                    <td>Mise à jour</td>
+                    <td>17</td>
+                    <td>Profil 2</td>
+                    <td><span>Brouillon</span> ⚙️</td>
+                  </tr>
+                  <tr>
+                    <td>28/02/2014</td>
+                    <td>Affiliation</td>
+                    <td>16</td>
+                    <td>Profil 1</td>
+                    <td><span>Brouillon</span>⚙️</td>
+                  </tr>
+                  <tr>
+                    <td>26/02/2014</td>
+                    <td>Mise à jour</td>
+                    <td>15</td>
+                    <td>ADMIN</td>
+                    <td><span>Validé</span></td>
+                  </tr>
+                  <tr>
+                    <td>25/02/2014</td>
+                    <td>Mise à jour</td>
+                    <td>14</td>
+                    <td>Profil 1</td>
+                    <td><span>Validé</span></td>
+                  </tr>
+                  <tr>
+                    <td>10/02/2014</td>
+                    <td>DNAS</td>
+                    <td>13</td>
+                    <td>ADMIN</td>
+                    <td><span>Validé</span></td>
+                  </tr>
+                  <tr>
+                    <td>23/01/2014</td>
+                    <td>Arrêt de travail</td>
+                    <td>12</td>
+                    <td>Profil 2</td>
+                    <td><span>Validé</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- Colonne 2 -->
+      <div class="stack">
+        <div class="pad">
+          <p><strong>Dernière connexion : le <time datetime="2025-10-02">02/10/2025</time> à 14:08</strong></p>
+
+          <article class="urgent">
+            <span class="dot"></span>
+            <div>
+              <strong>Urgent</strong>
+              <p>Il ne vous reste que 3 jours pour remplir la DNAS. <a href="#">Cliquez ici</a></p>
+            </div>
+          </article>
+
+          <div class="row right-grid right-grid-2">
+  <article class="tile">
+    <p><img src="./Images/mail.png" width="5%"> Messagerie</p>
+    <a href="https://mail.google.com">Vous avez 2 messages non lus</a><!--Chemin-->
+  </article>
+  <article class="tile">
+    <p>Contact PRO BTP</p>
+    <p><img src="./Images/tel.png" width="10%"> Conseiller : JEAN DUPONT</p>
+    <p><img src="./Images/tel.png" width="10%"> 04 04 04 04 04</p>
+    <p><img src="./Images/mail.png" width="10%"> <a href="https://mail.google.com">Envoyer un e-mail</a></p>
+  </article>
+</div>
+
+<article class="pad article espace">
+            <h4><img src="./Images/éclaire.png" width="5%"> Important</h4>
+            <ol class="important">
+              <li>Paiement des cotisations par chèque ou prélèvement à l'échéance</li>
+              <li>Arrêt de travail &gt; 90 jours : Ce qui change au 1er janvier 2014</li> <!-- &gt; représente le (>)-->
+              <li>Exonérations sociales et fiscales : conformité des contrats</li>
+              <li><a href="./FormulaireInscription.html">Inscrivez-vous</a> au télépaiement</li>
+            </ol>
+          </article>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Pied de page -->
+  <footer>
+      <p>02.10.2025</p>
+  </footer>
+</body>
+</html>
+<!--Rajouter les imgs sur le html-->
+<!--Rajouter plus de notes-->
+<!--Possitionner les href sur les bonne mage-->

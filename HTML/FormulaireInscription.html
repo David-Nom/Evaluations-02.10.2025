@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulaire d'inscription</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* Header */
+    header {
+      background: #222;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    /* Navigation */
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      background: #222;
+      padding: 0.8rem;
+      margin: 1.5rem;
+      border-radius: 5px;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+    }
+    nav ul li a:hover {
+      background: #444;
+      border-radius: 4px;
+    }
+
+    /* Section formulaire */
+    section {
+      display: flex;
+      justify-content: center;
+      background: #222;
+      margin: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      padding: 2rem;
+    }
+
+    form {
+      text-align: center;
+      color: #fff;
+      width: 100%;
+      max-width: 400px;
+    }
+    fieldset {
+      border: none;
+      margin-bottom: 1rem;
+    }
+    legend {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      font-weight: bold;
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      padding: 0.8rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    input[type="submit"] {
+      background: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    input[type="submit"]:hover {
+      background: #0056b3;
+    }
+
+    /* Footer fixé en bas */
+    footer {
+      background: #222;
+      color: #fff;
+      text-align: center;
+      padding: 0.8rem;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+    footer a {
+      color: #00bfff;
+      margin-left: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Formulaire d'inscription</h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="./index.html">Accueil</a></li>
+    </ul>
+  </nav>
+
+  <section>
+    <form method="post" id="form">
+      <fieldset>
+        <legend>Formulaire d'Inscription</legend>
+      </fieldset>
+      <input type="text" id="PSEUDO" placeholder="Créer votre pseudo" name="PSEUDO">
+      <input type="text" id="NOM" placeholder="Créer votre nom" name="NOM">
+      <input type="password" id="password" placeholder="Créer votre mot de passe" name="password">
+      <input type="submit" id="envoyer" value="Envoyer" name="envoyer">
+    </form>
+  </section>
+
+  <footer>
+    <p>Nous rejoindre : <a href="./index.html">Lien externe</a></p>
+  </footer>
+</body>
+</html>
